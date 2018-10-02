@@ -4,3 +4,15 @@ __x86_x64_NativeLinux_mbedtls/*
 __K64F_FreeRTOS_mbedtls/*
 pal-platform/*
 storage-selector/littlefs/*
+mbed-os/targets/TARGET_NUVOTON/TARGET_M2351/TARGET_NUMAKER_PFM_M2351/TARGET_M23_NS/*
+mbed-os/features/cellular/
+mbed-os/features/FEATURE_CLIENT/*
+mbed-os/features/FEATURE_COMMON_PAL/*
+mbed-os/features/FEATURE_UVISOR/*
+mbed-os/features/net/*
+mbed-os/features/netsocket/cellular/*
+mbed-os/features/netsocket/NetworkInterfaceDefaults.cpp
+mbed-os/features/nfc/*
+mbed-os/features/lorawan/*
+mbed-os/components/802.15.4_RF/*
+mbed-os/usb/*

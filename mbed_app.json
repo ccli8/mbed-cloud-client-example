@@ -6,7 +6,6 @@
     "target_overrides": {
         "*": {
             "target.features_add"               : ["BOOTLOADER", "STORAGE"],
-            "target.components_add"             : ["SD"],
             "platform.stdio-baud-rate"          : 115200,
             "platform.stdio-convert-newlines"   : true,
             "platform.stdio-buffered-serial"    : true,
@@ -59,6 +58,141 @@
             "idw0xx1.tx": "PA_9",
             "idw0xx1.rx": "PA_10",
             "target.macros_remove"                  : ["MBEDTLS_CONFIG_HW_SUPPORT"]
+        },
+        "NUMAKER_PFM_NUC472": {
+            "target.network-default-interface-type"     : "ETHERNET",
+            "target.bootloader_img"                     : "tools/mbed-bootloader-nuc472-block_device-sotp-v3.5.0.bin",
+            "target.header_offset"                      : "0x12000",
+            "target.app_offset"                         : "0x12400",
+            "target.components_add"                     : ["NUSD"],
+            "update-client.bootloader-details"          : "0x0",
+            "update-client.application-details"         : "0x12000",
+            "update-client.storage-address"             : "(1024*1024*64)",
+            "update-client.storage-size"                : "((MBED_ROM_START + MBED_ROM_SIZE - APPLICATION_ADDR) * MBED_CONF_UPDATE_CLIENT_STORAGE_LOCATIONS)",
+            "update-client.storage-locations"           : 1,
+
+            "mbed-cloud-client.update-storage"          : "ARM_UCP_FLASHIAP_BLOCKDEVICE",
+            "mbed-cloud-client.external-sst-support"    : null,
+
+            "client_app.sotp-section-1-address"         : "0x10000",
+            "client_app.sotp-section-1-size"            : "0x1000",
+            "client_app.sotp-section-2-address"         : "0x11000",
+            "client_app.sotp-section-2-size"            : "0x1000",            
+
+            "platform.stack-stats-enabled"              : true,
+            "platform.heap-stats-enabled"               : true,
+
+            "target.macros_add": [
+                "ESP8266_AT_SEL=ESP8266_AT_EXTERN"
+            ]
+        },
+        "NUMAKER_PFM_M487": {
+            "target.network-default-interface-type"     : "ETHERNET",
+            "target.bootloader_img"                     : "tools/mbed-bootloader-m487-block_device-sotp-v3.5.0.bin",
+            "target.header_offset"                      : "0x12000",
+            "target.app_offset"                         : "0x12400",
+            "target.components_add"                     : ["NUSD"],
+            "update-client.bootloader-details"          : "0x0",
+            "update-client.application-details"         : "0x12000",
+            "update-client.storage-address"             : "(1024*1024*64)",
+            "update-client.storage-size"                : "((MBED_ROM_START + MBED_ROM_SIZE - APPLICATION_ADDR) * MBED_CONF_UPDATE_CLIENT_STORAGE_LOCATIONS)",
+            "update-client.storage-locations"           : 1,
+
+            "mbed-cloud-client.update-storage"          : "ARM_UCP_FLASHIAP_BLOCKDEVICE",
+            "mbed-cloud-client.external-sst-support"    : null,
+
+            "client_app.sotp-section-1-address"         : "0x10000",
+            "client_app.sotp-section-1-size"            : "0x1000",
+            "client_app.sotp-section-2-address"         : "0x11000",
+            "client_app.sotp-section-2-size"            : "0x1000",
+
+            "platform.stack-stats-enabled"              : true,
+            "platform.heap-stats-enabled"               : true,
+
+            "target.macros_add": [
+                "ESP8266_AT_SEL=ESP8266_AT_EXTERN"
+            ]
+        },
+        "NUMAKER_IOT_M487": {
+            "target.network-default-interface-type"     : "WIFI",
+            "target.bootloader_img"                     : "tools/mbed-bootloader-m487_iot-block_device-sotp-v3.5.0.bin",
+            "target.header_offset"                      : "0x12000",
+            "target.app_offset"                         : "0x12400",
+            "target.components_add"                     : ["NUSD"],
+            "update-client.bootloader-details"          : "0x0",
+            "update-client.application-details"         : "0x12000",
+            "update-client.storage-address"             : "(1024*1024*64)",
+            "update-client.storage-size"                : "((MBED_ROM_START + MBED_ROM_SIZE - APPLICATION_ADDR) * MBED_CONF_UPDATE_CLIENT_STORAGE_LOCATIONS)",
+            "update-client.storage-locations"           : 1,
+
+            "mbed-cloud-client.update-storage"          : "ARM_UCP_FLASHIAP_BLOCKDEVICE",
+            "mbed-cloud-client.external-sst-support"    : null,
+
+            "drivers.uart-serial-rxbuf-size"            : 1024,
+            "drivers.uart-serial-txbuf-size"            : 1024,
+
+            "esp8266.tx"                                : "PH_8",
+            "esp8266.rx"                                : "PH_9",
+            "esp8266.rts"                               : "NC",
+            "esp8266.cts"                               : "NC",
+            "esp8266.rst"                               : "PH_3",
+            "esp8266.provide-default"                   : false,
+
+            "client_app.sotp-section-1-address"         : "0x10000",
+            "client_app.sotp-section-1-size"            : "0x1000",
+            "client_app.sotp-section-2-address"         : "0x11000",
+            "client_app.sotp-section-2-size"            : "0x1000",
+
+            "platform.stack-stats-enabled"              : true,
+            "platform.heap-stats-enabled"               : true,
+
+            "target.macros_add": [
+                "ESP8266_AT_SEL=ESP8266_AT_ONBOARD"
+            ]
+        },
+        "NUMAKER_PFM_M2351": {
+            "target.network-default-interface-type"     : "WIFI",
+            "target.bootloader_img"                     : "tools/mbed-bootloader-m2351-block_device-sotp-v3.5.0.hex",
+            "target.header_offset"                      : "0x12000",
+            "target.app_offset"                         : "0x12400",
+            "target.components_add"                     : ["NUSD"],
+            "update-client.bootloader-details"          : "0x0",
+            "update-client.application-details"         : "0x10022000",
+            "update-client.storage-address"             : "(1024*1024*64)",
+            "update-client.storage-size"                : "((MBED_ROM_START + MBED_ROM_SIZE - APPLICATION_ADDR) * MBED_CONF_UPDATE_CLIENT_STORAGE_LOCATIONS)",
+            "update-client.storage-locations"           : 1,
+
+            "mbed-cloud-client.update-storage"          : "ARM_UCP_FLASHIAP_BLOCKDEVICE",
+            "mbed-cloud-client.external-sst-support"    : null,
+
+            "led-pinname"                               : "LED1",
+
+            "drivers.uart-serial-rxbuf-size"            : 1024,
+            "drivers.uart-serial-txbuf-size"            : 1024,
+
+            "esp8266.tx"                                : "PD_1",
+            "esp8266.rx"                                : "PD_0",
+            "esp8266.rts"                               : "PD_3",
+            "esp8266.cts"                               : "PD_2",
+            "esp8266.rst"                               : "NC",
+            "esp8266.provide-default"                   : false,
+
+            "client_app.sotp-section-1-address"         : "0x10020000",
+            "client_app.sotp-section-1-size"            : "0x1000",
+            "client_app.sotp-section-2-address"         : "0x10021000",
+            "client_app.sotp-section-2-size"            : "0x1000",
+
+            "target.mbed_rom_start":    "0x10010000",
+            "target.mbed_rom_size":     "0x70000",
+            "target.mbed_ram_start":    "0x30002000",
+            "target.mbed_ram_size":     "0x16000",
+
+            "platform.stack-stats-enabled"              : true,
+            "platform.heap-stats-enabled"               : true,
+
+            "target.macros_add": [
+                "ESP8266_AT_SEL=ESP8266_AT_ONBOARD"
+            ]
         }
     },
     "config": {
