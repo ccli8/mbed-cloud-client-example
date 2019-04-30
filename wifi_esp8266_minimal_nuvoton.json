@@ -1,5 +1,8 @@
 {
     "macros": [
+        "MCC_MINIMAL",
+        "DISABLE_ERROR_DESCRIPTION",
+        "MCC_MEMORY",
         "ARM_UC_USE_PAL_BLOCKDEVICE=1"
     ],
     "target_overrides": {
@@ -16,128 +19,42 @@
             "client_app.platform-enable-led"            : 0,
             "mbed-client-pal.pal-dns-api-version"       : 2,
             "mbed-cloud-client.external-sst-support"    : 1,
-            "update-client.storage-locations"           : 1,
-            "mbed-trace.enable"                         : null,
+            "nanostack-hal.event-loop-use-mbed-events"  : true,
+            "nanostack-hal.event-loop-dispatch-from-application"    : false,
+            "nanostack-hal.critical-section-usable-from-interrupt"  : true,
+            "events.shared-dispatch-from-application"   : true,
             "events.shared-stacksize"                   : 2048,
+            "events.shared-eventsize"                   : 1536,
+            "mbed-trace.enable"                         : null,
             "nsapi.default-wifi-security"               : "WPA_WPA2",
             "nsapi.default-wifi-ssid"                   : "\"SSID\"",
-            "nsapi.default-wifi-password"               : "\"Password\""
-        },
-        "Freescale": {
-            "lwip.mem-size"                             : 12500
-        },
-        "STM_EMAC": {
-            "lwip.pbuf-pool-size"                       : 16,
-            "lwip.mem-size"                             : 12500
+            "nsapi.default-wifi-password"               : "\"Password\"",
+            "mbed-client-pal.pal-max-frag-len"          : 1,
+            "mbed-client.sn-coap-max-blockwise-payload-size" : 256
         },
         "K64F": {
-            "target.network-default-interface-type"     : "ETHERNET",
-            "target.bootloader_img"                     : "tools/mbed-bootloader-k64f-block_device-kvstore-v4.0.0.bin",
-            "target.header_offset"                      : "0xa000",
-            "target.app_offset"                         : "0xa400",
-            "target.components_add"                     : ["SD"],
-            "update-client.bootloader-details"          : "0x00007188",
-            "update-client.application-details"         : "(40*1024)",
-            "update-client.storage-address"             : "(1024*1024*64)",
-            "update-client.storage-size"                : "((MBED_ROM_START + MBED_ROM_SIZE - APPLICATION_ADDR) * MBED_CONF_UPDATE_CLIENT_STORAGE_LOCATIONS)",
-            "mbed-cloud-client.update-storage"          : "ARM_UCP_FLASHIAP_BLOCKDEVICE",
-            "storage_filesystem.internal_base_address"  : "(32*1024)",
-            "storage_filesystem.rbp_internal_size"      : "(8*1024)",
-            "storage_filesystem.external_base_address"  : "(0x0)",
-            "storage_filesystem.external_size"          : "(1024*1024*64)",
-            "storage.storage_type"                      : "FILESYSTEM",
-            "storage_filesystem.filesystem"             : "LITTLE",
-            "storage_filesystem.blockdevice"            : "SD"
-        },
-        "K66F": {
-            "target.network-default-interface-type"     : "ETHERNET",
-            "target.bootloader_img"                     : "tools/mbed-bootloader-k66f-internal_flash-no_rot-v4.0.0.bin",
+            "target.network-default-interface-type"     : "WIFI",
+            "target.bootloader_img"                     : "tools/mbed-bootloader-k64f-internal_flash-no_rot-v4.0.1.bin",
             "target.header_offset"                      : "0x8000",
             "target.app_offset"                         : "0x8400",
-            "rtos.main-thread-stack-size"               : 8192,
-            "update-client.bootloader-details"          : "0x4D58",
+            "target.restrict_size"                      : "0x74000",
+            "update-client.bootloader-details"          : "0x4A6C",
             "update-client.application-details"         : "(32*1024)",
             "update-client.storage-address"             : "(MBED_CONF_STORAGE_TDB_INTERNAL_INTERNAL_BASE_ADDRESS+MBED_CONF_STORAGE_TDB_INTERNAL_INTERNAL_SIZE)",
-            "update-client.storage-size"                : "(1024*1024-MBED_CONF_STORAGE_TDB_INTERNAL_INTERNAL_SIZE)",
+            "update-client.storage-size"                : "(512*1024-MBED_CONF_STORAGE_TDB_INTERNAL_INTERNAL_SIZE)",
+            "update-client.storage-locations"           : 1,
             "update-client.storage-page"                : 8,
             "mbed-cloud-client.update-storage"          : "ARM_UCP_FLASHIAP",
-            "mbed-cloud-client.disable-certificate-enrollment": null,
-            "storage_tdb_internal.internal_base_address": "(1024*1024)",
-            "storage_tdb_internal.internal_size"        : "(96*1024)",
-            "storage.storage_type"                      : "TDB_INTERNAL"
-        },
-        "NUCLEO_F429ZI": {
-            "target.network-default-interface-type"     : "ETHERNET",
-            "target.bootloader_img"                     : "tools/mbed-bootloader-nucleo_f429zi-internal_flash-no_rot-v4.0.0.bin",
-            "target.header_offset"                      : "0x8000",
-            "target.app_offset"                         : "0x8400",
-            "update-client.bootloader-details"          : "0x080078CC",
-            "update-client.application-details"         : "(MBED_ROM_START + MBED_BOOTLOADER_SIZE)",
-            "update-client.storage-address"             : "(MBED_CONF_STORAGE_TDB_INTERNAL_INTERNAL_BASE_ADDRESS+MBED_CONF_STORAGE_TDB_INTERNAL_INTERNAL_SIZE)",
-            "update-client.storage-size"                : "(1024*1024-MBED_CONF_STORAGE_TDB_INTERNAL_INTERNAL_SIZE)",
-            "update-client.storage-page"                : 1,
-            "mbed-cloud-client.update-storage"          : "ARM_UCP_FLASHIAP",
-            "storage_tdb_internal.internal_base_address": "(MBED_ROM_START+1024*1024)",
-            "storage_tdb_internal.internal_size"        : "(128*1024)",
-            "storage.storage_type"                      : "TDB_INTERNAL"
-        },
-        "UBLOX_EVK_ODIN_W2": {
-            "target.network-default-interface-type"     : "WIFI",
-            "target.bootloader_img"                     : "tools/mbed-bootloader-ublox_evk_odin_w2-block_device-kvstore-v4.0.0.bin",
-            "target.header_offset"                      : "0x10000",
-            "target.app_offset"                         : "0x10400",
-            "target.components_add"                     : ["SD"],
-            "update-client.bootloader-details"          : "0x08007300",
-            "update-client.application-details"         : "(0x08000000+64*1024)",
-            "update-client.storage-address"             : "(1024*1024*64)",
-            "update-client.storage-size"                : "((MBED_ROM_START + MBED_ROM_SIZE - APPLICATION_ADDR) * MBED_CONF_UPDATE_CLIENT_STORAGE_LOCATIONS)",
-            "mbed-cloud-client.update-storage"          : "ARM_UCP_FLASHIAP_BLOCKDEVICE",
-            "mbed-cloud-client.external-sst-support"    : 1,
-            "storage_filesystem.internal_base_address"  : "(0x08000000+32*1024)",
-            "storage_filesystem.rbp_internal_size"      : "(32*1024)",
-            "storage_filesystem.external_base_address"  : "(0x0)",
-            "storage_filesystem.external_size"          : "(1024*1024*64)",
-            "storage.storage_type"                      : "FILESYSTEM",
-            "storage_filesystem.filesystem"             : "LITTLE",
-            "storage_filesystem.blockdevice"            : "SD",
-            "target.lse_available"                      : 0,
-            "target.macros_remove"                      : ["MBEDTLS_CONFIG_HW_SUPPORT"]
-        },
-        "NUCLEO_F411RE": {
-            "client_app.mbedtls-user-config-file"       : "\"mbedTLSConfig_mbedOS_SW_TRNG_PSA.h\"",
-            "client_app.pal-user-defined-configuration" : "\"pal_config_non_trng_MbedOS.h\"",
-            "target.extra_labels_add"                   : ["PSA"],
-            "target.macros_add"                         : ["MBEDTLS_PSA_CRYPTO_C", "MBEDTLS_ENTROPY_NV_SEED"],
-            "target.network-default-interface-type"     : "WIFI",
-            "target.bootloader_img"                     : "tools/mbed-bootloader-nucleo_f411re-block_device-kvstore-v4.0.0.bin",
-            "target.header_offset"                      : "0x10000",
-            "target.app_offset"                         : "0x10400",
-            "target.components_add"                     : ["SD"],
-            "update-client.bootloader-details"          : "(0x08000000+30*1024)",
-            "update-client.application-details"         : "(0x08000000+64*1024)",
-            "update-client.storage-address"             : "(1024*1024*64)",
-            "update-client.storage-size"                : "((MBED_ROM_START + MBED_ROM_SIZE - APPLICATION_ADDR) * MBED_CONF_UPDATE_CLIENT_STORAGE_LOCATIONS)",
-            "mbed-cloud-client.update-storage"          : "ARM_UCP_FLASHIAP_BLOCKDEVICE",
-            "mbed-cloud-client.external-sst-support"    : 1,
-            "storage_filesystem.filesystem"             : "LITTLE",
-            "storage_filesystem.blockdevice"            : "SD",
-            "storage_filesystem.internal_base_address"  : "(0x08000000+32*1024)",
-            "storage_filesystem.rbp_internal_size"      : "(32*1024)",
-            "storage.storage_type"                      : "FILESYSTEM",
-            "storage_filesystem.external_base_address"  : "(0x0)",
-            "storage_filesystem.external_size"          : "(1024*1024*64)",
-            "events.shared-stacksize"                   : 2048,
-            "events.shared-eventsize"                   : 1024,
-            "drivers.uart-serial-rxbuf-size"            : 1024,
-            "drivers.uart-serial-txbuf-size"            : 1024,
-            "idw0xx1.provide-default"                   : true,
-            "idw0xx1.tx"                                : "PA_9",
-            "idw0xx1.rx"                                : "PA_10",
-            "target.macros_remove"                      : ["MBEDTLS_CONFIG_HW_SUPPORT"],
-            "sd.SPI_MOSI"                               : "PC_3",
-            "sd.SPI_MISO"                               : "PC_2",
-            "sd.SPI_CLK"                                : "PC_7",
-            "sd.SPI_CS"                                 : "PB_9"
+            "storage_tdb_internal.internal_base_address": "(512*1024)",
+            "storage_tdb_internal.internal_size"        : "(48*1024)",
+            "storage.storage_type"                      : "TDB_INTERNAL",
+            
+            "esp8266.rx"                                : "PTC3",
+            "esp8266.tx"                                : "PTC4",
+            "esp8266.rst"                               : "D8",
+            "esp8266.rts"                               : "PTC1",
+            "esp8266.cts"                               : "PTC2",
+            "esp8266.provide-default"                   : true
         },
         "NUMAKER_PFM_NUC472": {
             "target.network-default-interface-type"     : "ETHERNET",
@@ -165,9 +82,8 @@
             "platform.stack-stats-enabled"              : true,
             "platform.heap-stats-enabled"               : true,
 
-            "target.macros_add": [
-                "ESP8266_AT_SEL=ESP8266_AT_EXTERN"
-            ]
+            "target.extra_labels_add"                   : ["PSA"],
+            "target.macros_add"                         : ["MBEDTLS_PSA_CRYPTO_C", "ESP8266_AT_SEL=ESP8266_AT_EXTERN"]
         },
         "NUMAKER_PFM_M487": {
             "target.network-default-interface-type"     : "ETHERNET",
@@ -195,9 +111,8 @@
             "platform.stack-stats-enabled"              : true,
             "platform.heap-stats-enabled"               : true,
 
-            "target.macros_add": [
-                "ESP8266_AT_SEL=ESP8266_AT_EXTERN"
-            ]
+            "target.extra_labels_add"                   : ["PSA"],
+            "target.macros_add"                         : ["MBEDTLS_PSA_CRYPTO_C", "ESP8266_AT_SEL=ESP8266_AT_EXTERN"]
         },
         "NUMAKER_IOT_M487": {
             "target.network-default-interface-type"     : "WIFI",
@@ -222,9 +137,6 @@
             "storage_filesystem.external_base_address"  : "(0x0)",
             "storage_filesystem.external_size"          : "(1024*1024*64)",
 
-            "drivers.uart-serial-rxbuf-size"            : 1024,
-            "drivers.uart-serial-txbuf-size"            : 1024,
-
             "esp8266.tx"                                : "PH_8",
             "esp8266.rx"                                : "PH_9",
             "esp8266.rts"                               : "NC",
@@ -235,9 +147,8 @@
             "platform.stack-stats-enabled"              : true,
             "platform.heap-stats-enabled"               : true,
 
-            "target.macros_add": [
-                "ESP8266_AT_SEL=ESP8266_AT_ONBOARD"
-            ]
+            "target.extra_labels_add"                   : ["PSA"],
+            "target.macros_add"                         : ["MBEDTLS_PSA_CRYPTO_C", "ESP8266_AT_SEL=ESP8266_AT_ONBOARD"]
         },
         "NUMAKER_PFM_M2351": {
             "target.network-default-interface-type"     : "WIFI",
@@ -264,8 +175,6 @@
 
             "led-pinname"                               : "LED1",
 
-            "drivers.uart-serial-rxbuf-size"            : 1024,
-            "drivers.uart-serial-txbuf-size"            : 1024,
             "esp8266.tx"                                : "PD_1",
             "esp8266.rx"                                : "PD_0",
             "esp8266.rts"                               : "PD_3",
@@ -281,9 +190,8 @@
             "platform.stack-stats-enabled"              : true,
             "platform.heap-stats-enabled"               : true,
 
-            "target.macros_add": [
-                "ESP8266_AT_SEL=ESP8266_AT_ONBOARD"
-            ]
+            "target.extra_labels_add"                   : ["PSA"],
+            "target.macros_add"                         : ["MBEDTLS_PSA_CRYPTO_C", "ESP8266_AT_SEL=ESP8266_AT_ONBOARD"]
         }
     },
     "config": {

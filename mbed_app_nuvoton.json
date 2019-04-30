@@ -165,9 +165,8 @@
             "platform.stack-stats-enabled"              : true,
             "platform.heap-stats-enabled"               : true,
 
-            "target.macros_add": [
-                "ESP8266_AT_SEL=ESP8266_AT_EXTERN"
-            ]
+            "target.extra_labels_add"                   : ["PSA"],
+            "target.macros_add"                         : ["MBEDTLS_PSA_CRYPTO_C", "ESP8266_AT_SEL=ESP8266_AT_EXTERN"]
         },
         "NUMAKER_PFM_M487": {
             "target.network-default-interface-type"     : "ETHERNET",
@@ -195,9 +194,8 @@
             "platform.stack-stats-enabled"              : true,
             "platform.heap-stats-enabled"               : true,
 
-            "target.macros_add": [
-                "ESP8266_AT_SEL=ESP8266_AT_EXTERN"
-            ]
+            "target.extra_labels_add"                   : ["PSA"],
+            "target.macros_add"                         : ["MBEDTLS_PSA_CRYPTO_C", "ESP8266_AT_SEL=ESP8266_AT_EXTERN"]
         },
         "NUMAKER_IOT_M487": {
             "target.network-default-interface-type"     : "WIFI",
@@ -222,9 +220,6 @@
             "storage_filesystem.external_base_address"  : "(0x0)",
             "storage_filesystem.external_size"          : "(1024*1024*64)",
 
-            "drivers.uart-serial-rxbuf-size"            : 1024,
-            "drivers.uart-serial-txbuf-size"            : 1024,
-
             "esp8266.tx"                                : "PH_8",
             "esp8266.rx"                                : "PH_9",
             "esp8266.rts"                               : "NC",
@@ -235,9 +230,8 @@
             "platform.stack-stats-enabled"              : true,
             "platform.heap-stats-enabled"               : true,
 
-            "target.macros_add": [
-                "ESP8266_AT_SEL=ESP8266_AT_ONBOARD"
-            ]
+            "target.extra_labels_add"                   : ["PSA"],
+            "target.macros_add"                         : ["MBEDTLS_PSA_CRYPTO_C", "ESP8266_AT_SEL=ESP8266_AT_ONBOARD"]
         },
         "NUMAKER_PFM_M2351": {
             "target.network-default-interface-type"     : "WIFI",
@@ -264,8 +258,6 @@
 
             "led-pinname"                               : "LED1",
 
-            "drivers.uart-serial-rxbuf-size"            : 1024,
-            "drivers.uart-serial-txbuf-size"            : 1024,
             "esp8266.tx"                                : "PD_1",
             "esp8266.rx"                                : "PD_0",
             "esp8266.rts"                               : "PD_3",
@@ -281,9 +273,8 @@
             "platform.stack-stats-enabled"              : true,
             "platform.heap-stats-enabled"               : true,
 
-            "target.macros_add": [
-                "ESP8266_AT_SEL=ESP8266_AT_ONBOARD"
-            ]
+            "target.extra_labels_add"                   : ["PSA"],
+            "target.macros_add"                         : ["MBEDTLS_PSA_CRYPTO_C", "ESP8266_AT_SEL=ESP8266_AT_ONBOARD"]
         }
     },
     "config": {
